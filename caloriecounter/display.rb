@@ -2,16 +2,11 @@ require 'pstore'
 require_relative 'classes'
 # require_relative 'main'
 
-data_file = PStore.new("./datafiles/data.pstore")
-data_file.transaction do
-  $totals = data_file[:totals]
-end
-
 DATE_LEN = 25
 NAME_LEN = 15
 CAL_LEN = 15
 
-# def list_items
+def list_items
   hdate = "Date"
   hname = "Item"
   hcalories = "Calories"
@@ -21,8 +16,8 @@ CAL_LEN = 15
   free_space_calheader = CAL_LEN - hcalories.length - 1
 
 
-  70.times {print "#"}
-  puts "#"
+  70.times {print "_"}
+  puts "_"
   print "|"
   # 62.times {print " "}
   5.times {print " "}
@@ -46,7 +41,7 @@ CAL_LEN = 15
   print "|"
   puts ""
 
-$totals.each do |item|
+  $array.each do |item|
     pname = item["name"]
     calories = item["calories"].to_s
     date = item["date"].to_s
@@ -75,4 +70,4 @@ $totals.each do |item|
     19.times {print "_"}
     puts "|"
   end
-# end
+end

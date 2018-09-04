@@ -4,10 +4,9 @@ require_relative 'display'
 
 ######################################################## App #############################################################
 
-# Welcome message
 $array = load_file('./datafiles/data.pstore', :array)
 $totals = load_file('./datafiles/data.pstore', :totals)
-
+# Welcome message
 puts "Welcome to Calorie Counter"
 
 # Main Loop
@@ -52,7 +51,7 @@ while true
   end
 
   if choice == "3"
-    puts $array # FIXME: Change to list_items when complete
+    list_items # FIXME: Change to list_items when complete
     response = continue_prompt
     if response != "yes"
       break
