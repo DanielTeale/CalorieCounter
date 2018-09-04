@@ -3,7 +3,7 @@ class Food
   def initialize
     @name = nil
     @calories = nil
-    @date = Time.now.strftime("%d/%m/%Y %H:%m%P")
+    @date = nil
     self.class.all << self
   end
 

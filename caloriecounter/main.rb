@@ -1,27 +1,48 @@
 require 'pstore'
 require_relative 'classes'
 
+
+
+######################################################## App #############################################################
+
+
 # Loads previous data
+$totals = []
 data_file = PStore.new('./datafiles/data.pstore')
 data_file.transaction do
+  $array = data_file[:array]
   $totals = data_file[:totals]
 end
+
+# Welcome message
 puts "Welcome to Calorie Counter"
-# totals = []
+
+# Main Loop
 while true
-  hash = {}
+
+# Initialize empty hash
+  hash = Hash.new
+
+# Collect food item
   puts "What have you eaten?"
   food = Food.new
-  food.name = gets.chomp
+  food.date = Time.now.strftime("%d/%m/%Y %I:%M%P")
+  food.name = (gets.chomp).capitalize
   hash['name'] = food.name
+
+# Collect calorie count
   puts "How many calories was it?"
   calorie = gets.chomp
   calorie = calorie.to_i
   food.calories = calorie
   hash['calories'] = calorie
   hash['date'] = food.date
+
+# Add hash to totals array
   $totals << hash
   puts $totals
+
+# Continue prompt
   puts "Do you want to add another item?"
   response = gets.chomp
   response.downcase!
@@ -29,13 +50,9 @@ while true
     break
   end
   system('clear')
-  # rescue
-  #   puts "That is not a valid amount"
-  # end
 end
-# food << item
 
-data_file = PStore.new('./datafiles/data.pstore')
+# Save data to pstore
 data_file.transaction do
   data_file[:totals] = $totals
 end
