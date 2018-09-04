@@ -7,12 +7,15 @@ require_relative 'classes'
 
 
 # Loads previous data
-$totals = []
+
 data_file = PStore.new('./datafiles/data.pstore')
 data_file.transaction do
-  $array = data_file[:array]
+  # $array = data_file[:array]
   $totals = data_file[:totals]
 end
+
+$array = []
+$totals = []
 
 # Welcome message
 puts "Welcome to Calorie Counter"
@@ -28,6 +31,7 @@ while true
   food = Food.new
   food.date = Time.now.strftime("%d/%m/%Y %I:%M%P")
   food.name = (gets.chomp).capitalize
+  hash['date'] = food.date
   hash['name'] = food.name
 
 # Collect calorie count
@@ -36,7 +40,7 @@ while true
   calorie = calorie.to_i
   food.calories = calorie
   hash['calories'] = calorie
-  hash['date'] = food.date
+  
 
 # Add hash to totals array
   $totals << hash
