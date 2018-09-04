@@ -25,11 +25,7 @@ end
 def continue_prompt
   puts "Do you wish to continue?"
   response = gets.chomp
-  response.downcase!
-  if response != "yes"
-   abort
-  end
-  system('clear')
+  response.downcase
 end
 
 # Load previous user data

@@ -33,19 +33,31 @@ while true
   # Add hash to totals array
     $array << hash
     $totals << calorie
-    continue_prompt
+    response = continue_prompt
+    if response != "yes"
+      break
+    end
+    system('clear')
   end
 
   if choice == "2"
     sum = 0
     $totals.each {|k| sum += k}
     puts "You have consumed #{sum} calories"
-    continue_prompt
+    response = continue_prompt
+    if response != "yes"
+      break
+    end
+    system('clear')
   end
 
   if choice == "3"
     puts $array # FIXME: Change to list_items when complete
-    continue_prompt
+    response = continue_prompt
+    if response != "yes"
+      break
+    end
+    system('clear')
   end
 end
 
