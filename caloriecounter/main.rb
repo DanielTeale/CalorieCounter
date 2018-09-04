@@ -1,6 +1,6 @@
 require 'pstore'
 require_relative 'classes'
-
+require_relative 'display'
 
 
 ######################################################## App #############################################################
@@ -14,8 +14,8 @@ data_file.transaction do
   $totals = data_file[:totals]
 end
 
-$array = []
-$totals = []
+# $array = []
+# $totals = []
 
 # Welcome message
 puts "Welcome to Calorie Counter"
@@ -60,3 +60,6 @@ end
 data_file.transaction do
   data_file[:totals] = $totals
 end
+
+food_list = Food.new
+puts food_list.list_items
