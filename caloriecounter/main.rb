@@ -1,62 +1,67 @@
-require 'pstore'
 require_relative 'classes'
 
 
 
 ######################################################## App #############################################################
 
-
-# Loads previous data
-
-data_file = PStore.new('./datafiles/data.pstore')
-data_file.transaction do
-  # $array = data_file[:array]
-  $totals = data_file[:totals]
-end
-
-$array = []
-$totals = []
-
 # Welcome message
+$array = load_file('./datafiles/data.pstore', :array)
+$totals = load_file('./datafiles/data.pstore', :totals)
+
 puts "Welcome to Calorie Counter"
 
 # Main Loop
 while true
+  choice = get_choice
+  if choice == "1"
+  # Initialize empty hash
+    hash = Hash.new
+  # Collect food item
+    puts "What have you eaten?"
+    food = Food.new
+  # Capitalize all words in input
+    food.name = (((gets.chomp).split(" ")).each {|k| k.capitalize!}).join(" ")
+    hash['name'] = food.name
 
-# Initialize empty hash
-  hash = Hash.new
+  # Collect calorie count for item
+    puts "How many calories was it?"
+    calorie = (gets.chomp).to_i
+    food.calories = calorie
+    hash['calories'] = calorie
+    hash['date'] = food.date
 
-# Collect food item
-  puts "What have you eaten?"
-  food = Food.new
-  food.date = Time.now.strftime("%d/%m/%Y %I:%M%P")
-  food.name = (gets.chomp).capitalize
-  hash['date'] = food.date
-  hash['name'] = food.name
-
-# Collect calorie count
-  puts "How many calories was it?"
-  calorie = gets.chomp
-  calorie = calorie.to_i
-  food.calories = calorie
-  hash['calories'] = calorie
-  
-
-# Add hash to totals array
-  $totals << hash
-  puts $totals
-
-# Continue prompt
-  puts "Do you want to add another item?"
-  response = gets.chomp
-  response.downcase!
-  if response != "yes"
-    break
+  # Add hash to totals array
+    $array << hash
+    $totals << calorie
+    response = continue_prompt
+    if response != "yes"
+      break
+    end
+    system('clear')
   end
-  system('clear')
+
+  if choice == "2"
+    sum = 0
+    $totals.each {|k| sum += k}
+    puts "You have consumed #{sum} calories"
+    response = continue_prompt
+    if response != "yes"
+      break
+    end
+    system('clear')
+  end
+
+  if choice == "3"
+    puts $array # FIXME: Change to list_items when complete
+    response = continue_prompt
+    if response != "yes"
+      break
+    end
+    system('clear')
+  end
 end
+
 
 # Save data to pstore
-data_file.transaction do
-  data_file[:totals] = $totals
-end
+save_file('./datafiles/data.pstore', :array, $array)
+save_file('./datafiles/data.pstore', :totals, $totals)
