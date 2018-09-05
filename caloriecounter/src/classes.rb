@@ -1,5 +1,7 @@
 require 'pstore'
 
+######################################## CLASS AND METHODS #############################################
+
 class Food
   attr_accessor :name, :calories, :date
   def initialize
@@ -22,8 +24,9 @@ class Food
   end
 end
 
+# Prompt if user wishes to continue
 def continue_prompt
-  puts "Do you wish to continue?"
+  puts "Do you wish to continue?(Y/N)"
   response = gets.chomp
   response.downcase
 end
@@ -52,16 +55,18 @@ end
 
 # Take user input
 def get_choice
-  puts "What would you like do to?"
+  puts "\nWhat would you like do to?"
   puts "(1. Add Item 2. Check totals 3. List items 4. Set a goal 5. Reset)"
   choice = gets.chomp
   choice
 end
 
+# Get user goals from user
 def get_goal(avg)
   puts "Your daily intake should be around #{avg}"
   puts "What is your goal?"
   goal = (gets.chomp).to_i
+# Warn user if goal is over +- 200  
   if goal > (avg + 200)
     puts "Your goal is above the daily average"
   elsif goal < (avg - 200)

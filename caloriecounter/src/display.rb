@@ -1,7 +1,7 @@
 require 'rainbow'
 require_relative 'classes'
 
-######################################TABLE FORMATTING##############################################
+##################################### TABLE FORMATTING #############################################
 
 # Table parameters
 DATE_LEN = 25 # Column 1
@@ -15,6 +15,26 @@ VBORDER = Rainbow("|").turquoise.bright # Vertical border
 # Padding method
 def space
  EXTRA.times {print " "}
+end
+
+def list_title
+  title = "Welcome to Calorie Counter"
+  print " "
+  (TOTAL_LEN - 1).times {print HBORDER}
+  puts HBORDER
+  print VBORDER
+  TOTAL_LEN.times {print " "}
+  puts VBORDER
+  print VBORDER
+  3.times {space}
+  7.times {print " "}
+  print Rainbow(title).magenta
+  free_space_title = DATE_LEN + NAME_LEN + CAL_LEN - title.length - 7
+  free_space_title.times {print " "}
+  puts VBORDER
+  print VBORDER
+  TOTAL_LEN.times {print HBORDER}
+  puts VBORDER
 end
 
 def list_items
