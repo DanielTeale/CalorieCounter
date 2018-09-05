@@ -84,6 +84,20 @@ while true
     end
     system('clear')
   end
+
+  if choice == "5"
+    system('clear')
+    puts "Are you sure you wish to reset?(Y/N)"
+    response = (gets.chomp).downcase
+    if response == 'y'
+      $goal = 0
+      $array = []
+      $totals = []
+      puts "OK, your record is now erased"
+    else
+      puts "Your record is preserved"
+    end
+  end
 end
 
 

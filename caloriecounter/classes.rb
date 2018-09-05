@@ -53,7 +53,7 @@ end
 # Take user input
 def get_choice
   puts "What would you like do to?"
-  puts "(1. Add Item 2. Check totals 3. List items 4. Set a goal)"
+  puts "(1. Add Item 2. Check totals 3. List items 4. Set a goal 5. Reset)"
   choice = gets.chomp
   choice
 end
