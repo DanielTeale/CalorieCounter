@@ -26,7 +26,7 @@ end
 
 # Prompt if user wishes to continue
 def continue_prompt
-  puts "Do you wish to continue?(Y/N)"
+  puts "Do you wish to continue?"
   response = gets.chomp
   response.downcase
 end
@@ -55,7 +55,7 @@ end
 
 # Take user input
 def get_choice
-  puts "\nWhat would you like do to?"
+  puts "\nWhat would you like to do?"
   puts "(1. Add Item 2. Check totals 3. List items 4. Set a goal 5. Reset)"
   choice = gets.chomp
   choice

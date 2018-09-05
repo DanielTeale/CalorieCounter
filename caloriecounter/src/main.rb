@@ -55,7 +55,7 @@ while true
         puts "Doing well! You have consumed #{sum} calories, #{goal_difference} less than your goal"
       end
     response = continue_prompt # See classes.rb
-    if response != "y"
+    if response != "yes"
       break
     end
     system('clear')
