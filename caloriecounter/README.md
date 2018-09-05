@@ -8,6 +8,7 @@ A Calorie counter terminal app to allow the user to add and track calorie intake
 * Stores records persistently across sessions
 * Returns records to user in easier to read format
 * Allows user to set goals and compares their progress to their goal
+* Encourage users to set realistic and healthy goals
 
 
 ## Instructions
@@ -17,20 +18,26 @@ A Calorie counter terminal app to allow the user to add and track calorie intake
 3. Add item:
     * Add the food item
     * Add the amount of calories for the servings consumed
-    ![Image of Add item](https://i.imgur.com/TZLx39v.png)
+    
+   <p align="center"> <img src="https://github.com/DanielTeale/CalorieCounter/blob/master/caloriecounter/docs/Add-item.png"></p>
 4. Check totals:
     * Gives totals and compares them to your goal - if goal hasn't been set will return as nil
-    ![Image of Check Totals](https://i.imgur.com/GHS2nFy.png)
+    
+    
+    <p align="center"><img src="https://github.com/DanielTeale/CalorieCounter/blob/master/caloriecounter/docs/Check-total.png"></p>
 5. List items:
     * Returns all items entered in table
-    ![Image of List Items](https://i.imgur.com/UjKUY9c.png)
+    
+    <p align="center"> <img src="https://github.com/DanielTeale/CalorieCounter/blob/master/caloriecounter/docs/list-items.png"></p>
 6. Set goal
     * Set gender - will return average calorie intake for gender
     * Enter stated goal - warns when goal is more than +- 200 from average
-    ![Image of Set Goal](https://i.imgur.com/bFcy5yF.png) 
+    
+    <p align="center"> <img src="https://github.com/DanielTeale/CalorieCounter/blob/master/caloriecounter/docs/set-goal.png"></p>
 7. Reset
     * Erases records - asks for confirmation before proceeding
-    ![Image of Reset](https://i.imgur.com/GfL7J4e.png)
+    
+    <p align="center"> <img src="https://github.com/DanielTeale/CalorieCounter/blob/master/caloriecounter/docs/reset.png"></p>
 8. Data automatically saves when user chooses not to continue
 
 ## GitHub Repository
@@ -39,8 +46,8 @@ The repository can be accessed in this location: [Calorie Counter](https://githu
 
 ## User workflow diagram
 
-![Image of Workflow Diagram](https://i.imgur.com/wjpkDqo.png | width=250)
+<img src="https://raw.githubusercontent.com/DanielTeale/CalorieCounter/master/caloriecounter/docs/User%20Workflow%20Diagram.png" width="800">
 
 ## Plan & Timeline
 
-![Image of Brainstorming](https://i.imgur.com/qAGgYBg.jpg)
+<img src="https://github.com/DanielTeale/CalorieCounter/blob/master/caloriecounter/docs/brainstorm.jpg" width="800">
