@@ -1,23 +1,32 @@
-require 'pstore'
 require 'rainbow'
 require_relative 'classes'
-DATE_LEN = 25
-NAME_LEN = 15
-CAL_LEN = 15
-EXTRA = 5
-TOTAL_LEN = DATE_LEN + NAME_LEN + CAL_LEN + EXTRA + 10
-HBORDER = Rainbow("_").turquoise.bright
-VBORDER = Rainbow("|").turquoise.bright
+
+######################################TABLE FORMATTING##############################################
+
+# Table parameters
+DATE_LEN = 25 # Column 1
+NAME_LEN = 15 # Column 2
+CAL_LEN = 15 # Column 3
+EXTRA = 5 # Padding
+TOTAL_LEN = DATE_LEN + NAME_LEN + CAL_LEN + EXTRA + 10 # Totals
+HBORDER = Rainbow("_").turquoise.bright # Horizontal border 
+VBORDER = Rainbow("|").turquoise.bright # Vertical border 
+
+# Padding method
 def space
  EXTRA.times {print " "}
 end
+
 def list_items
+# Table headings
  hdate = "Date"
  hname = "Item"
  hcalories = "Calories"
+# Parameter logic
  free_space_dateheader = DATE_LEN - hdate.length - 1
  free_space_itemheader = NAME_LEN - hname.length - 1
  free_space_calheader = CAL_LEN - hcalories.length - 1
+# Table generation
  TOTAL_LEN.times {print HBORDER}
  puts HBORDER
  print VBORDER
@@ -41,13 +50,18 @@ def list_items
  (CAL_LEN + 4).times {print HBORDER}
  print VBORDER
  puts ""
-$array.each do |item|
+
+ # Item formatting
+ $array.each do |item|
+ # Table Entries
   pname = item["name"]
   calories = item["calories"].to_s
   date = item["date"].to_s
+ # Entry logic
   free_space_date = DATE_LEN - date.length - 1 
   free_space_name = NAME_LEN - pname.length - 1
   free_space_calories = CAL_LEN - calories.length - 1
+ # Table generation
   print VBORDER
   space
   print "#{date}"
