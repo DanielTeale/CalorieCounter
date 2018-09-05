@@ -53,7 +53,21 @@ end
 # Take user input
 def get_choice
   puts "What would you like do to?"
-  puts "(1. Add Item 2. Check totals 3. List items)"
+  puts "(1. Add Item 2. Check totals 3. List items 4. Set a goal)"
   choice = gets.chomp
   choice
+end
+
+def get_goal(avg)
+  puts "Your daily intake should be around #{avg}"
+  puts "What is your goal?"
+  goal = (gets.chomp).to_i
+  if goal > (avg + 200)
+    puts "Your goal is above the daily average"
+  elsif goal < (avg - 200)
+    puts "Your goal is below the daily average"
+  else
+    puts "Good goal! You can do it!"
+  end
+  goal
 end
