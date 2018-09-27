@@ -1,5 +1,6 @@
 require_relative 'classes'
 require_relative 'display'
+require_relative 'api'
 
 
 ######################################################## MAIN #############################################################
@@ -26,8 +27,8 @@ while true
     hash['name'] = food.name
 
 # Collect calorie count for item
-    puts "How many calories was it?"
-    calorie = (gets.chomp).to_i
+    # puts "How many calories was it?"
+    calorie = get_calorie(food.name)
     food.calories = calorie
     hash['calories'] = calorie
     hash['date'] = food.date

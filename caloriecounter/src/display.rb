@@ -5,7 +5,7 @@ require_relative 'classes'
 
 # Table parameters
 DATE_LEN = 25 # Column 1
-NAME_LEN = 15 # Column 2
+NAME_LEN = 40 # Column 2
 CAL_LEN = 15 # Column 3
 EXTRA = 5 # Padding
 TOTAL_LEN = DATE_LEN + NAME_LEN + CAL_LEN + EXTRA + 10 # Totals
