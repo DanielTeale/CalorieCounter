@@ -9,8 +9,8 @@ NAME_LEN = 15 # Column 2
 CAL_LEN = 15 # Column 3
 EXTRA = 5 # Padding
 TOTAL_LEN = DATE_LEN + NAME_LEN + CAL_LEN + EXTRA + 10 # Totals
-HBORDER = Rainbow("_").turquoise.bright # Horizontal border 
-VBORDER = Rainbow("|").turquoise.bright # Vertical border 
+HBORDER = Rainbow(" ").turquoise.bright.bg(:orange) # Horizontal border 
+VBORDER = Rainbow(" ").turquoise.bright.bg(:orange) # Vertical border 
 
 # Padding method
 def space
@@ -19,8 +19,7 @@ end
 
 def list_title
   title = "Welcome to Calorie Counter"
-  print " "
-  (TOTAL_LEN - 1).times {print HBORDER}
+  (TOTAL_LEN + 1).times {print HBORDER}
   puts HBORDER
   print VBORDER
   TOTAL_LEN.times {print " "}
@@ -28,7 +27,7 @@ def list_title
   print VBORDER
   3.times {space}
   7.times {print " "}
-  print Rainbow(title).magenta
+  print title
   free_space_title = DATE_LEN + NAME_LEN + CAL_LEN - title.length - 7
   free_space_title.times {print " "}
   puts VBORDER
@@ -77,7 +76,6 @@ def list_items
   pname = item["name"]
   calories = item["calories"].to_s
   date = item["date"].to_s
- # Entry logic
   free_space_date = DATE_LEN - date.length - 1 
   free_space_name = NAME_LEN - pname.length - 1
   free_space_calories = CAL_LEN - calories.length - 1
